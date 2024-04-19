@@ -51,6 +51,7 @@ export class RegisterComponent implements OnInit {
       })
       .catch((error) => console.log(error));
   }
+  
   onClick() {
     this.userService
       .loginWithGoogle()
