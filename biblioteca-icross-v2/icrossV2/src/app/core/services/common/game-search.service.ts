@@ -24,11 +24,6 @@ export class GameSearchService {
       { params }
     );
   }
-
-  getGameById(id: string) {
-    return this.httpCliente.get<Game>(environment.BASE_API_URL + 'games/' + id);
-  }
-
   setGames(games: Game[]): void {
     this.$games.set(games);
   }

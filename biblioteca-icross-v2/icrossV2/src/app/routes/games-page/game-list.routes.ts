@@ -4,21 +4,20 @@ import { GameIdResolver } from '../../core/resolvers/game-id.resolver';
 
 export const gameListRoutes: Routes = [
   {
-    path: 'games',
+    path: '',
     loadComponent: () =>
       import('./pages/game-page/games-page.component').then(
         (m) => m.GamesPageComponent
       ),
-      
   },
   {
     path: 'games/:id',
-    component: GameDetailPageComponent,
+    component: GameDetailPageComponent  ,
     resolve: {
       game: GameIdResolver,
     },
     data: {
       reuseComponent: false,
     },
-  }
+  },
 ];
