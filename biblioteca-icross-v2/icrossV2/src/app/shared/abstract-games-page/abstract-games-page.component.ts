@@ -3,9 +3,9 @@ import {
   Component,
   OnInit,
   Signal,
+  TemplateRef,
   WritableSignal,
   inject,
-  signal,
 } from '@angular/core';
 import { GameSearchService } from '../../core/services/common/game-search.service';
 import { AutoDestroyService } from '../../core/services/utils/auto-destroy.service';
@@ -15,11 +15,13 @@ import { Game } from '../../core/models/game';
 import { SearchFilters } from '../../core/models/search-filters';
 import { SpinnerComponent } from '../spinner/spinner.component';
 import { GameListComponent } from '../game-list/game-list.component';
+import { NgTemplateOutlet } from '@angular/common';
+import { PageParams } from '../../core/models/page-params';
 
 @Component({
   selector: 'app-abstract-games-page',
   standalone: true,
-  imports: [GameListComponent, SpinnerComponent],
+  imports: [GameListComponent, SpinnerComponent,NgTemplateOutlet],
   templateUrl: './abstract-games-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './abstract-games-page.component.scss',
@@ -33,15 +35,19 @@ export abstract class AbstractGamesPageComponent implements OnInit {
 
   $loading: Signal<boolean> = this.gamesSearchService.$loading;
   $games: WritableSignal<Game[]> = this.gamesSearchService.$games;
+
   searchFilters: SearchFilters = {
     search: '',
     page_size: 50,
   };
+  params:PageParams={
+    title:''
+  }
   constructor() {}
   ngOnInit(): void {
     this.gamesSearchService.queryString$
       .pipe(
-        tap((query:string)=>this.searchFilters.search=query),
+        tap((query: string) => (this.searchFilters.search = query)),
         switchMap((title: string) =>
           this.gamesSearchService.searchGames2(this.searchFilters)
         ),
