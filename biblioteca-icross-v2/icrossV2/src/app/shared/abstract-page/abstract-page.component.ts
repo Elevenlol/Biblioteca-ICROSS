@@ -3,7 +3,6 @@ import {
   Component,
   OnInit,
   Signal,
-  TemplateRef,
   WritableSignal,
   inject,
 } from '@angular/core';
@@ -22,9 +21,9 @@ import { PageParams } from '../../core/models/page-params';
   selector: 'app-abstract-games-page',
   standalone: true,
   imports: [GameListComponent, SpinnerComponent,NgTemplateOutlet],
-  templateUrl: './abstract-games-page.component.html',
+  templateUrl: './abstract-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrl: './abstract-games-page.component.scss',
+  styleUrl: './abstract-page.component.scss',
 })
 export abstract class AbstractGamesPageComponent implements OnInit {
   protected readonly gamesSearchService: GameSearchService =
