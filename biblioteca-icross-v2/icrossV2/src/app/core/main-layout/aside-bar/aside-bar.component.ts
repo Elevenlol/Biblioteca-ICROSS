@@ -6,11 +6,11 @@ import { GenreService } from '../../../routes/games-page/services/genre.service'
 @Component({
   selector: 'app-aside-bar',
   standalone: true,
-  imports: [RouterLink,RouterLinkActive,RouterOutlet],
-  providers:[],
+  imports: [RouterLink, RouterLinkActive, RouterOutlet],
+  providers: [],
   templateUrl: './aside-bar.component.html',
   styleUrl: './aside-bar.component.scss',
-  changeDetection:ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AsideBarComponent {
   $genres: Signal<Genre[]> = this.genreService.$genres;

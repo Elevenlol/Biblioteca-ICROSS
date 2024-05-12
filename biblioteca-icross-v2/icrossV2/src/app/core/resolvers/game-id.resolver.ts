@@ -10,6 +10,6 @@ export class GameIdResolver implements Resolve<Observable<GameDetails>> {
   constructor(private gameService: GameService) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<GameDetails> {
-    return this.gameService.getGameById(route.params['id']);
+    return this.gameService.getGameById2(route.params['id']);
   }
 }

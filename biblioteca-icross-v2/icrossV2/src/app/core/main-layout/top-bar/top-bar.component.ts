@@ -23,9 +23,11 @@ export class TopBarComponent {
   ) {}
   query: string = '';
   queryChange$: Subject<string> = new Subject<string>();
+
   ngOnInit(): void {
     this.susbcribeToInput();
   }
+
   susbcribeToInput() {
     this.queryChange$
       .pipe(debounceTime(500), distinctUntilChanged(), takeUntil(this.destroy$))

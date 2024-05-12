@@ -13,4 +13,9 @@ export class GameService  {
       `${environment.BASE_API_URL}games/${id}`
     );
   }
+  getGameById2(id: number): Observable<GameDetails> {
+    return this.httpClient.get<GameDetails>(
+      `${environment.ALTERNATIVE_API_URL}games/${id}`
+    );
+  }
 }
